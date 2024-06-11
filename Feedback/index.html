@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>FeedBack</title>
+  <link href="./favicon.png" rel="icon">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+<link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css'>
+<link rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Pacifico&amp;family=Quicksand&amp;display=swap'><link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+	<div class="loading-overlay" style="display: none;">
+		<!-- <img src="./1uoA-unscreen.gif" alt=""> -->
+		<!-- <img src="./L.gif" alt=""> -->
+		<!-- <img src="./Loading .gif" alt=""> -->
+	  </div>
+<!-- partial:index.partial.html -->
+<div class="container d-flex justify-content-center align-items-center">
+	
+	<!-- // FORM
+  -------------------------------------------------------------
+  ------------------------------------------------------------>
+	
+	<form action="" name="formName" method="post">
+		
+		<h1 class="title text-center mb-4">Talk to Us</h1>
+
+			<!-- Name -->
+			<div class="form-group position-relative">
+				<label for="formName" class="d-block">
+					<i class="icon" data-feather="user"></i>
+				</label>
+				<input type="text" id="formName" name="name" class="form-control form-control-lg thick" placeholder="Name" required>
+			</div>
+
+			<!-- E-mail -->
+			<div class="form-group position-relative">
+				<label for="formEmail" class="d-block">
+					<i class="icon" data-feather="mail"></i>
+				</label>
+				<input type="email" id="formEmail" name="email" class="form-control form-control-lg thick" placeholder="E-mail" required>
+			</div>
+
+			<!-- Message -->
+			<div class="form-group message">
+				<textarea id="formMessage" class="form-control form-control-lg" rows="7" placeholder="Mensagem" name="message" required></textarea>
+			</div>
+		
+			<!-- Submit btn -->
+			<div class="text-center">
+        <input type="submit" class="btn btn-primary">
+				<!-- <button type="submit" class="btn btn-primary" tabIndex="-1">Send message</button> -->
+			</div>
+	</form>
+	
+</div>
+<!-- partial -->
+  <script src='https://code.jquery.com/jquery-3.3.1.slim.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js'></script>
+<script src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js'></script>
+<script src='https://unpkg.com/feather-icons'></script><script  src="./script.js"></script>
+<script src="./script.js">
+
+</script>
+<script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbwBBweu-cmxXpJUKeA-O5YLgyPy-cZ3MSu8tJENm1_4NUKFIAb1NeR0Y9mQBiorwpW06g/exec';
+    const form = document.forms['formName'];
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+
+      // Display loading animation
+      const loadingOverlay = document.querySelector('.loading-overlay');
+      loadingOverlay.style.display = 'flex';
+
+      // Submit the form
+      fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+        .then(response => {
+          // Hide loading animation
+
+          loadingOverlay.style.display = 'none';
+          // Display success message
+          // alert("Thank you! Your form is submitted successfully.");
+
+
+          // Reload the page
+          window.location.reload();
+          // swal("Good job!", "You clicked the button!", "success");
+          // alert("Thank you! Your form is submitted successfully.");
+
+          window.location.href = 'Popup.html';
+
+
+        })
+        .catch(error => {
+          // Hide loading animation
+          loadingOverlay.style.display = 'none';
+          // Display error message
+          console.error('Error!', error.message);
+        });
+    });
+
+    resetButton.addEventListener('click', () => {
+      form.reset(); // Reset form fields
+    });
+
+
+  </script>
+
+</body>
+
+
+</html>
